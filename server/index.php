@@ -1,18 +1,40 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-header("Access-Control-Allow-Headers: *");
+// Set headers for API requests
+header("Access-Control-Allow-Origin: *"); // Specify allowed domain(s)
+header("Access-Control-Allow-Methods: GET, OPTIONS"); // Adjust as needed
+header("Access-Control-Allow-Headers: Content-Type"); // Adjust as needed
 header("Content-Type: application/json");
 
+// Function to fetch data from file
 function fetchDataFromFile() {
     $file = "assets/contact.txt"; // Path to your text file
-    $fileContent = file_get_contents($file); // Read the content of the file
-    $data = json_decode($fileContent, true); // Decode the JSON content into an associative array
-    return $data;
+    if (file_exists($file)) {
+        $fileContent = file_get_contents($file); // Read the content of the file
+        if ($fileContent !== false) {
+            $data = json_decode($fileContent, true); // Decode the JSON content into an associative array
+            if ($data !== null) {
+                return $data;
+            } else {
+                http_response_code(500); // Internal Server Error
+                echo json_encode(array("error" => "Failed to decode JSON"));
+            }
+        } else {
+            http_response_code(500); // Internal Server Error
+            echo json_encode(array("error" => "Failed to read file"));
+        }
+    } else {
+        http_response_code(404); // Not Found
+        echo json_encode(array("error" => "File not found"));
+    }
 }
 
-// if (strpos($_SERVER['REQUEST_URI'], '/data') !== false) {
-//     echo json_encode(fetchData());
-// }
+// Handle OPTIONS requests
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200); // OK
+    exit;
+}
+
+// Output JSON data
 echo json_encode(fetchDataFromFile());
 ?>
+
