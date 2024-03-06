@@ -1,6 +1,4 @@
 import { Link } from "react-scroll";
-import Home from "../view/home";
-import About from "../view/about";
 import React from "react";
 function Navigation({positionScroll}) {
     return ( 

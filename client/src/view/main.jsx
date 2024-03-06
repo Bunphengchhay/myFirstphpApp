@@ -11,10 +11,8 @@ import Contact from './contact';
 import News from './news';
 import image1 from '../assets/Cocktail.gif'
 
-// const image1 = "https://i.pinimg.com/564x/43/fd/49/43fd49df886982623d56594ceb7786e8.jpg";
 const image2 = "https://i.pinimg.com/564x/ff/91/cb/ff91cb251c5eb901b69ea315cfad45cc.jpg";
 const image3 = "https://i.pinimg.com/564x/dc/77/31/dc7731faf0d29961a037f0ba09d8f72e.jpg";
-const image4 = "https://images.pexels.com/photos/2437299/pexels-photo-2437299.jpeg";
 function Main() {
     const [scrollPosition, setScrollPosition] = useState(0);
     const [newsHeight, setNewHeight] = useState(0);

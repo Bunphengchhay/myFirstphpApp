@@ -7,7 +7,8 @@ function Contact() {
   
     useEffect(() => {
       // Fetch data from the API endpoint
-      fetch(`${API_URL}/index.php`)
+      // fetch(`${API_URL}/index.php`)
+      fetch(API_URL)
         .then(response => {
           if (!response.ok) {
             throw new Error('Failed to fetch data');
