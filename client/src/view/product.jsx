@@ -1,7 +1,12 @@
 import React from "react";
-import { Button } from "react-scroll";
+// import { Button } from "react-scroll";
+
 
 function Product() {
+    const handleButtonClick = () => {
+        alert("For demo purpose only!");
+    };
+
     return ( 
     <div className="section" style={{textAlign: 'center', color: 'white'}}>
         <h1> Menu </h1>
@@ -17,7 +22,8 @@ function Product() {
             </div>
             
         </div>
-        <Button style={{textDecoration: 'underline', background: 'none', color: 'white', borderStyle: 'none', marginTop: '100px'}}> Click here for more </Button>
+        <button onClick={handleButtonClick}> Click for more </button>
+        {/* <Button style={{textDecoration: 'underline', background: 'none', color: 'white', borderStyle: 'none', marginTop: '100px'}}> Click here for more </Button> */}
     </div> );
 }
 

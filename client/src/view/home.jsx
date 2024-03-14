@@ -2,7 +2,7 @@ import React from "react";
 function Home() {
     return ( 
         <div className="section" style={{textAlign: 'center', color: 'white'}}>
-            <h1> Esctasy  </h1>
+            <h1> Ecstasy  </h1>
             <p> Since 1992 </p>
             <div style={{ height: '100%', display: 'flex', alignItems: "center", justifyContent: 'center'}}>
                 <div>
@@ -12,6 +12,7 @@ function Home() {
                 </div>
             </div>
         </div>
+
      );
 }
 

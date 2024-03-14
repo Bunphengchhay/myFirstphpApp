@@ -11,11 +11,18 @@ function News() {
         setCurrentIndex(newIndex);
     };
 
+    // useEffect(() => {
+    //     containerRef.current.addEventListener('scroll', handleScroll);
+    //     return () => {
+    //         containerRef.current.removeEventListener('scroll', handleScroll);
+    //     };
+    // }, []);
     useEffect(() => {
-        containerRef.current.addEventListener('scroll', handleScroll);
-        return () => {
-            containerRef.current.removeEventListener('scroll', handleScroll);
-        };
+        const element = containerRef.current;
+        if (element) {
+            element.addEventListener('scroll', handleScroll);
+            return () => element.removeEventListener('scroll', handleScroll);
+        }
     }, []);
 
     const scrollToIndex = (index) => {
@@ -42,13 +49,13 @@ function News() {
                 ))}
             </div>
         </div>
+
     );
 }
 
 export default News;
 
 
-;
 
 
 

@@ -8,11 +8,9 @@ function About() {
                     
             <div style={{display:"flex", justifyContent: 'center'}}>
                 <div className="cards">
-                    <div>
-                        <h1> Moment to share </h1>
-                    </div>
-                    <div>
-                        <p style={{fontSize: '18px'}}> Welcome to Esctasy, San Jose's premier cocktail destination, where European bar traditions blend seamlessly to create a unique experience. From classic cocktails to innovative creations, our expert mixologists craft libations that tantalize the senses. Explore our diverse selection of wines, craft beers, and indulge in our curated snacks and desserts. <br/> <br/>Join us at Esctasy and elevate your night out with sophistication and style. Whether you're seeking a cozy spot for an intimate date night or a lively atmosphere to celebrate with friends, our vibrant ambiance and impeccable service ensure every visit is memorable. Cheers to unforgettable moments!</p>
+                    <div className="textCard">
+                    <h1> Moment to share </h1>
+                        <p style={{fontSize: '18px'}}> Welcome to Ecstasy, San Jose's premier cocktail destination, where European bar traditions blend seamlessly to create a unique experience. From classic cocktails to innovative creations, our expert mixologists craft libations that tantalize the senses. Explore our diverse selection of wines, craft beers, and indulge in our curated snacks and desserts. <br/> <br/>Join us at Esctasy and elevate your night out with sophistication and style. Whether you're seeking a cozy spot for an intimate date night or a lively atmosphere to celebrate with friends, our vibrant ambiance and impeccable service ensure every visit is memorable. Cheers to unforgettable moments!</p>
                     </div>
                 </div>
             </div>

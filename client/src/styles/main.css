@@ -56,15 +56,23 @@
 }
 .cards{
 /* From https://css.glass */
-background: rgba(255, 255, 255, 0.11);
+/* background: rgba(255, 255, 255, 0.11);
 border-radius: 16px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(8.1px);
 -webkit-backdrop-filter: blur(8.1px);
-border: 1px solid rgba(255, 255, 255, 0.3);
-width: 600px;
-height: 400px;
-overflow-y: scroll;
+border: 1px solid rgba(255, 255, 255, 0.3); */
+background-color: white;
+width: 100%;
+max-height: 700px;
+height: auto;
+color: black;
+/* overflow-y: scroll; */
+display: flex;
+justify-content: center;
+}
+.textCard{
+    max-width: 500px;
 }
 #social{
     display: flex;
@@ -90,5 +98,109 @@ overflow-y: scroll;
 #menu > div > div > img{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-  
+
+.sideBar{
+    display: none;
+    width: 100vw;
+    height: 3vh;
+             /* Initial state */
+             opacity: 0;
+             transform: translateY(-100%);
+             /* Transition */
+             transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.burgerBar div{
+    margin: 5px;
+    z-index: 2000;
+}
+.sideBarDropDown{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 1000;
+    /* From https://css.glass */
+    background: rgba(241, 222, 173, 0.632);
+    /* border-radius: 16px; */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12.9px);
+    -webkit-backdrop-filter: blur(12.9px);
+    /* border: 1px solid rgba(50, 252, 216, 0.3); */
+    transform: translateY(-150%);
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Add transition */
+}
+.myForm{
+    width: 100vw;
+    max-width: 1500px;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#formLogin{
+    width: 80%;
+    padding: 50px;
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+#eachForm{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+#eachForm label{
+    width: 100px; /* Fixed width for labels */
+    text-align: right; /* Align the text to the right for a uniform look */
+    margin-right: 10px; /* Add some space between the label and the input */
+
+}
+#eachForm input{
+    flex-grow: 1;
+}
+.login{
+    text-align: center;
+}
+
+input{
+    width: calc(100% - 110px); /* Adjust based on the label width and margin */
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 768px){
+    .sideBar{
+        display: flex;
+        align-items: center;
+        background-color: antiquewhite;
+        align-items: center;
+        justify-content: flex-end;
+        opacity: 1;
+        transform: translateY(0);
+        
+    }
+    .navbar{
+        display: none;
+    }
+    .sideBarDropDown{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .dropDownItems {
+        display: block; /* Ensure items display in block format */
+        text-align: center; /* Center align the items */
+    }
+    
+    .dropDownItems a {
+        display: block; /* Make each link display in block format */
+        padding: 10px; /* Add padding for better spacing */
+        text-decoration: none; /* Remove default link underline */
+        color: black; /* Set link color */
+        font-weight: bold;
+        transition: background-color 0.3s; /* Add transition for hover effect */
+    }
+    
+    .dropDownItems a:hover {
+        background-color: antiquewhite;
+    }
+   
+    
+}
   

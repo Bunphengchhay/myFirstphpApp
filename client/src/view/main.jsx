@@ -13,6 +13,7 @@ import image1 from '../assets/Cocktail.gif'
 
 const image2 = "https://i.pinimg.com/564x/ff/91/cb/ff91cb251c5eb901b69ea315cfad45cc.jpg";
 const image3 = "https://i.pinimg.com/564x/dc/77/31/dc7731faf0d29961a037f0ba09d8f72e.jpg";
+
 function Main() {
     const [scrollPosition, setScrollPosition] = useState(0);
     const [newsHeight, setNewHeight] = useState(0);
@@ -38,10 +39,7 @@ function Main() {
     return (
         <div>
             <Navigation positionScroll = {scrollPosition} />
-            {/* <div className="fixed-box"> */}
-                {/* <div className="container-wrapper"> */}
                     <div className={scrollPosition > 10 ? 'container scroll' : 'container'}>
-          
                         <Element name="home">
                             <Parallax bgImage={image1} strength={500}
                             >
@@ -69,10 +67,71 @@ function Main() {
                     <Element name="contact">
                                 <Contact />
                     </Element>
-                {/* </div> */}
-            {/* </div> */}
         </div>
     );
 }
-
 export default Main;
+
+
+
+
+// function Main() {
+//     const [scrollPosition, setScrollPosition] = useState(0);
+//     const [newsHeight, setNewHeight] = useState(0);
+
+//     useEffect(() => {
+//         const handleScroll = () => {
+//             const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+//             setScrollPosition(scrollPercentage);
+//             const divElement = document.getElementById('news'); // Replace 'your-div-id' with the actual id of your div
+//             const rect = divElement.clientHeight;
+//             const middlePosition = (rect.top + rect.bottom) / 2;
+//             setNewHeight(middlePosition);
+//         };
+
+//         window.addEventListener("scroll", handleScroll);
+
+//         return () => {
+//             window.removeEventListener("scroll", handleScroll);
+//         };
+//     }, []);
+
+
+//     return (
+//         <div>
+//             {/* <Navigation positionScroll = {scrollPosition} /> */}
+//                     <div className={scrollPosition > 10 ? 'container scroll' : 'container'}>
+          
+//                         <Element name="home">
+//                             <Parallax bgImage={image1} strength={500}
+//                             >
+//                                 <Home />
+//                             </Parallax>
+//                         </Element>
+//                         <Element name="about">
+//                             <Parallax bgImage={image2} strength={500}
+//                             >
+//                                 <About />
+//                             </Parallax>
+//                         </Element>
+//                         <Element name="product">
+//                             <Parallax bgImage={image3} strength={500}>
+//                                 <Product />
+//                             </Parallax>
+//                         </Element>
+//                         <Element name="news" id = 'news' className={scrollPosition > newsHeight ? 'newsTwo': ''}>
+//                             <Parallax strength={500}>
+//                                 <News />
+//                             </Parallax>
+//                         </Element>
+
+//                     </div>
+//                     <Element name="contact">
+//                                 <Contact />
+//                     </Element>
+//         </div>
+//     );
+// }
+
+// export default Main;
+

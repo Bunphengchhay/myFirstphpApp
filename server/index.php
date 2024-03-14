@@ -34,7 +34,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-// Output JSON data
-echo json_encode(fetchDataFromFile());
+function fetchDataFromRDS(){
+    require_once('RDSlogin.php');
+}
+
+// Check the requested API path
+$path = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+
+// // Output JSON data
+// echo json_encode(fetchDataFromFile());
+// Perform actions based on the API path
+switch ($path) {
+    case '/rds':
+        // Return data from RDS
+        fetchDataFromRDS();
+        break;
+    default:
+        // Output JSON data
+        echo json_encode(fetchDataFromFile());
+        break;
+}
 ?>
 
