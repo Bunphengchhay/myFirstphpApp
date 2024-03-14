@@ -1,7 +1,7 @@
 // Define the default base URL and API endpoint
 const DEFAULT_BASE_URL = 'http://54.67.117.128';
 const LOCAL_BASE_URL = 'http://localhost';
-const API_ENDPOINT = '/index.php';
+const API_ENDPOINT = '/api/index.php';
 
 // Check if running locally
 const isLocal = window.location.hostname === 'localhost';
@@ -19,10 +19,10 @@ export default API_URL;
 // const API_ENDPOINT = '/api/index.php';
 
 // // Concatenate the base URL and API endpoint
-// const BASE_URL = process.env.REACT_APP_API_URL || DEFAULT_BASE_URL;
-// const API_URL = `${BASE_URL}${API_ENDPOINT}`;
+ //const BASE_URL = process.env.REACT_APP_API_URL || DEFAULT_BASE_URL;
+ //const API_URL = `${BASE_URL}${API_ENDPOINT}`;
 
-// export default API_URL;
+ //export default API_URL;
 
 
 // // running local http://localhost/index.php

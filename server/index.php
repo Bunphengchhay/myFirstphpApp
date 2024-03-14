@@ -1,7 +1,7 @@
 <?php
 // Set headers for API requests
 header("Access-Control-Allow-Origin: *"); // Specify allowed domain(s)
-header("Access-Control-Allow-Methods: GET, OPTIONS"); // Adjust as needed
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); // Adjust as needed
 header("Access-Control-Allow-Headers: Content-Type"); // Adjust as needed
 header("Content-Type: application/json");
 
@@ -24,7 +24,7 @@ function fetchDataFromFile() {
         }
     } else {
         http_response_code(404); // Not Found
-        echo json_encode(array("error" => "File not found"));
+        echo json_encode(array("error" => "File not found !"));
     }
 }
 
@@ -38,6 +38,10 @@ function fetchDataFromRDS(){
     require_once('RDSlogin.php');
 }
 
+function testEnv(){
+    require_once('test.php');
+}
+
 // Check the requested API path
 $path = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
 
@@ -45,9 +49,12 @@ $path = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
 // echo json_encode(fetchDataFromFile());
 // Perform actions based on the API path
 switch ($path) {
+    case '/test':
+	echo testEnv();
+	break;
     case '/rds':
         // Return data from RDS
-        fetchDataFromRDS();
+        echo fetchDataFromRDS();
         break;
     default:
         // Output JSON data

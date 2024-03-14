@@ -1,4 +1,9 @@
 <?php
+// Set headers for API requests
+header("Access-Control-Allow-Origin: *"); // Specify allowed domain(s)
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); // Adjust as needed
+header("Access-Control-Allow-Headers: Content-Type"); // Adjust as needed
+header("Content-Type: application/json");
 require_once __DIR__ . '/vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
@@ -41,13 +46,13 @@ if ($result->num_rows > 0) {
     $dbPassword = trim($row['password']); // Trim whitespace characters
     if (trim($inputPassword) === $dbPassword) {
         // Passwords match, access granted
-        echo json_encode(array(
+        echo trim(json_encode(array(
             'status' => 'ok',
             'access' => 'granted',
             'firstname' => $row['firstname'],
             'lastname' => $row['lastname'],
             'email' => $row['email']
-        ));
+        )));
     } else {
         // Passwords don't match, access failed
         http_response_code(401);
