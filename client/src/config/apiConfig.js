@@ -1,7 +1,7 @@
 // Define the default base URL and API endpoint
 const DEFAULT_BASE_URL = 'http://54.67.117.128';
 const LOCAL_BASE_URL = 'http://localhost';
-const API_ENDPOINT = '/api/index.php';
+const API_ENDPOINT = '/index.php';
 
 // Check if running locally
 const isLocal = window.location.hostname === 'localhost';
@@ -11,6 +11,11 @@ const BASE_URL = isLocal ? LOCAL_BASE_URL : DEFAULT_BASE_URL;
 
 // Concatenate the base URL and API endpoint
 const API_URL = `${BASE_URL}${API_ENDPOINT}`;
+
+// Append '/api' in front of '/index.php' if not running locally
+if (!isLocal) {
+    API_URL = `${BASE_URL}/api${API_ENDPOINT}`;
+}
 
 export default API_URL;
 

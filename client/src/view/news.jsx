@@ -10,13 +10,6 @@ function News() {
         const newIndex = Math.round(scrollLeft / containerRef.current.offsetWidth);
         setCurrentIndex(newIndex);
     };
-
-    // useEffect(() => {
-    //     containerRef.current.addEventListener('scroll', handleScroll);
-    //     return () => {
-    //         containerRef.current.removeEventListener('scroll', handleScroll);
-    //     };
-    // }, []);
     useEffect(() => {
         const element = containerRef.current;
         if (element) {
@@ -37,7 +30,7 @@ function News() {
             <h1 style={{ textAlign: 'center' }}>News feeds</h1>
             <div className= "newsScroll" style={{ display: 'flex', scrollSnapType: 'x mandatory', width: '100%', height: '100vh', overflowX: 'scroll', overflowY: 'hidden' }} ref={containerRef}>
                 {imageDT?.map((image, index) => (
-                    <Parallax key={index} bgImage={image['link']} strength={500} style={{ minWidth: '100%', flex: '0 0 auto', scrollSnapAlign: 'start' }}>
+                    <Parallax key={index} bgImage={image['link']} strength={100} style={{ minWidth: '100%', flex: '0 0 auto', scrollSnapAlign: 'start' }}>
                         <div style={{ width: '100%', height: '100vh' }}>
                         </div>
                     </Parallax>

@@ -22,6 +22,7 @@ const withAuthentication = (WrappedComponent) => {
     const [isAuthenticated, setIsAuthenticated] = useState(
       localStorage.getItem('authenticated') === 'true'
     );
+    const [names, setNames] = useState([]);
 
     useEffect(() => {
       const handleStorageChange = () => {
@@ -37,7 +38,18 @@ const withAuthentication = (WrappedComponent) => {
       };
     }, []);
 
-    return isAuthenticated ? <WrappedComponent {...props} /> : <Auth />;
+     // Retrieve names from localStorage when isAuthenticated changes
+     useEffect(() => {
+      if (isAuthenticated) {
+        const storedNames = localStorage.getItem('names');
+        // Listen for changes in localStorage
+        if (storedNames) {
+          setNames(JSON.parse(storedNames));
+        }
+      }
+    }, [isAuthenticated]);
+
+    return isAuthenticated ? <WrappedComponent {...props} names={names} /> : <Auth />;
   };
 
   return AuthenticationWrapper;

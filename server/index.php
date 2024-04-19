@@ -39,27 +39,43 @@ function fetchDataFromRDS(){
 }
 
 function testEnv(){
-    require_once('test.php');
+    // require_once('test.php');
+    echo "<p> hello world</p>";
+}
+
+function getHiddenText(){
+    require_once('readHiddenText.php');
+}
+
+function getFakeAuth(){
+    require_once('auth.php');
 }
 
 // Check the requested API path
 $path = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
 
 // // Output JSON data
-// echo json_encode(fetchDataFromFile());
-// Perform actions based on the API path
+//echo json_encode(fetchDataFromFile());
+//Perform actions based on the API path
 switch ($path) {
     case '/test':
-	echo testEnv();
-	break;
+        echo testEnv();
+        break;
+    case '/hidden':
+        echo getHiddenText();
+        break;
     case '/rds':
         // Return data from RDS
         echo fetchDataFromRDS();
+        break;
+    case '/auth':
+        echo getFakeAuth();
         break;
     default:
         // Output JSON data
         echo json_encode(fetchDataFromFile());
         break;
 }
+
 ?>
 

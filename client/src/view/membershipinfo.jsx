@@ -1,5 +1,6 @@
 import React from "react";
 function MembershipInfo() {
+    
     return ( 
             <div>
                 <h3> Welcome to Ecstasy </h3>
