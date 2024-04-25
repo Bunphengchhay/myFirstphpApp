@@ -34,39 +34,34 @@ if ($conn->connect_error) {
     exit;
 }
 
-// Perform query to select user by email
-$sql = "SELECT firstname, lastname, email, password FROM user_information WHERE email = ?";
+// Perform query to select user by email and password
+$sql = "SELECT id, first_name, last_name, email, home_address, home_phone, cell_phone FROM users WHERE email = ? AND password = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $inputEmail);
+$stmt->bind_param("ss", $inputEmail, $inputPassword);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    $dbPassword = trim($row['password']); // Trim whitespace characters
-    if (trim($inputPassword) === $dbPassword) {
-        // Passwords match, access granted
-        echo trim(json_encode(array(
-            'status' => 'ok',
-            'access' => 'granted',
-            'firstname' => $row['firstname'],
-            'lastname' => $row['lastname'],
-            'email' => $row['email']
-        )));
-    } else {
-        // Passwords don't match, access failed
-        http_response_code(401);
-        echo json_encode(array(
-            'status' => '401',
-            'access' => 'denied'
-        ));
-    }
-} else {
-    // User not found
-    http_response_code(404);
+    // User found, return user information excluding password
     echo json_encode(array(
-        'status' => '404',
-        'access' => 'denied'
+        'status' => 'ok',
+        'user' => array(
+            'id' => $row['id'],
+            'firstname' => $row['first_name'],
+            'lastname' => $row['last_name'],
+            'email' => $row['email'],
+            'home_address' => $row['home_address'],
+            'home_phone' => $row['home_phone'],
+            'cell_phone' => $row['cell_phone']
+        )
+    ));
+} else {
+    // User not found or password incorrect
+    http_response_code(401);
+    echo json_encode(array(
+        'status' => '401',
+        'message' => 'Unauthorized'
     ));
 }
 
@@ -74,3 +69,4 @@ if ($result->num_rows > 0) {
 $stmt->close();
 $conn->close();
 ?>
+

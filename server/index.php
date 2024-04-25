@@ -51,6 +51,18 @@ function getFakeAuth(){
     require_once('auth.php');
 }
 
+function curlAllInfo(){
+    require_once('curlInfo.php');
+}
+
+function createUser(){
+    require_once('./auth/addnewuser.php');
+}
+
+function getAllUsers(){
+    require_once('./auth/getAllUserInfo.php');
+}
+
 // Check the requested API path
 $path = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
 
@@ -58,11 +70,22 @@ $path = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
 //echo json_encode(fetchDataFromFile());
 //Perform actions based on the API path
 switch ($path) {
+    case '/curlInfo':
+        echo curlAllInfo();
+        break;
     case '/test':
         echo testEnv();
         break;
     case '/hidden':
         echo getHiddenText();
+        break;
+    case '/rds/getAllUsers':
+        // create user
+        echo getAllUsers();
+        break;
+    case '/rds/createuser':
+        // create user
+        echo createUser();
         break;
     case '/rds':
         // Return data from RDS

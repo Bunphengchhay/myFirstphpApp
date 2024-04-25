@@ -62,6 +62,7 @@ function Navigation({positionScroll}) {
                     Contacts
                 </ScrollLink>
                 <Link to="/membership" style={{textDecoration: 'none', color: 'black'}}> Membership </Link>
+                <Link to="/findusers" style={{textDecoration: 'none', color: 'black'}}> Users </Link>
            
             </div>
             <div className="sideBar" onClick={resetSideBar}>
@@ -106,6 +107,7 @@ function Navigation({positionScroll}) {
                     News
                 </ScrollLink>
                 <Link to="/membership" style={{textDecoration: 'none', color: 'black'}}> Membership </Link>
+                <Link to="/findusers" style={{textDecoration: 'none', color: 'black'}}> Users </Link>
                 <ScrollLink to= "contact"
                 smooth={true}
                 duration={500}
