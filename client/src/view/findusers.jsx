@@ -38,7 +38,7 @@ function FindUsers() {
 
     return ( 
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '100px'}}>
-            {/* Search bar */}
+           
             <div style={{minWidth: '600px', overflow: 'scroll'}}>
             <h1> Welcome to our platform</h1>
             <input
@@ -52,7 +52,7 @@ function FindUsers() {
             {loading && <p>Loading...</p>}
 
             {/* Table to display users */}
-            {!loading && (
+            {/* {!loading && (
                 <>
                     <h2>Users</h2>
                     <table>
@@ -82,7 +82,7 @@ function FindUsers() {
                         </tbody>
                     </table>
                 </>
-            )}
+            )} */}
             </div>
         </div>
      );
