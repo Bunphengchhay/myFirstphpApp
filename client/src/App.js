@@ -36,6 +36,7 @@ import Login from './components/login';
 import withAuthentication from './script/withAuthentication'
 import Navigation from './navigation/navigation';
 import FindUsers from './view/findusers';
+import Test from './view/test';
 
 function App() {
   return (
@@ -47,7 +48,7 @@ function App() {
           <Route path="/membership" element={<Membership />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/findusers" element={<FindUsers />} />
+          <Route path="/findusers" element={<Test />} />
         </Routes>
       </div>
     </BrowserRouter>
