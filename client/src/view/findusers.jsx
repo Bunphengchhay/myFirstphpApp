@@ -3,6 +3,7 @@ import API_URL from "../config/apiConfig";
 
 function FindUsers() {
     const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true); // New state for loading indicator
     const [searchQuery, setSearchQuery] = useState("");
 
     useEffect(() => {
@@ -11,8 +12,10 @@ function FindUsers() {
                 const response = await fetch(`${API_URL}/rds/getAllUsers`);
                 const data = await response.json();
                 setUsers(data);
+                setLoading(false); // Set loading to false when data is fetched
             } catch (error) {
                 console.error("Error fetching users:", error);
+                setLoading(false); // Set loading to false in case of error
             }
         };
 
@@ -45,40 +48,48 @@ function FindUsers() {
                 onChange={(e) => setSearchQuery(e.target.value)}
             />
 
+            {/* Loading indicator */}
+            {loading && <p>Loading...</p>}
+
             {/* Table to display users */}
-            <h2>Users</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Home Address</th>
-                        <th>Home Phone</th>
-                        <th>Cell Phone</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {filteredUsers.map(user => (
-                        <tr key={user.id}>
-                            <td>{user.id}</td>
-                            <td>{user.first_name}</td>
-                            <td>{user.last_name}</td>
-                            <td>{user.email}</td>
-                            <td>{user.home_address}</td>
-                            <td>{user.home_phone}</td>
-                            <td>{user.cell_phone}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            {!loading && (
+                <>
+                    <h2>Users</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Home Address</th>
+                                <th>Home Phone</th>
+                                <th>Cell Phone</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {filteredUsers.map(user => (
+                                <tr key={user.id}>
+                                    <td>{user.id}</td>
+                                    <td>{user.first_name}</td>
+                                    <td>{user.last_name}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.home_address}</td>
+                                    <td>{user.home_phone}</td>
+                                    <td>{user.cell_phone}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </>
+            )}
             </div>
         </div>
      );
 }
 
 export default FindUsers;
+
 
 
 // import React, { useState, useEffect } from "react";
